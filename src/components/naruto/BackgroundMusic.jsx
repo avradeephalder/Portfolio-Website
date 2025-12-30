@@ -10,7 +10,7 @@ export function BackgroundMusic() {
   useEffect(() => {
     audioRef.current = new Audio('/sounds/naruto-theme.mp3')
     audioRef.current.loop = true
-    audioRef.current.volume = 0.01
+    audioRef.current.volume = 0.1
 
     return () => {
       if (audioRef.current) {
