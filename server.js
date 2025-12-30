@@ -8,7 +8,13 @@ dotenv.config()
 const app = express()
 
 // Middleware
-app.use(cors())
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://portfolio-backend-7p3g.onrender.com'
+  ],
+  credentials: true
+}))
 app.use(express.json())
 
 // MongoDB Local Connection
