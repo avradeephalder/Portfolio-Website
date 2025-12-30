@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Set Akatsuki/Uchiha Dark Theme as default */
+  --background: oklch(0.12 0.02 280); /* Deep dark navy/black */
+  --foreground: oklch(0.96 0.01 60); /* Parchment text */
+  --card: oklch(0.18 0.02 280);
+  --card-foreground: oklch(0.96 0.01 60);
+  --popover: oklch(0.18 0.02 280);
+  --popover-foreground: oklch(0.96 0.01 60);
+  --primary: oklch(0.65 0.19 45); /* Burnt orange stays */
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.45 0.25 20); /* Akatsuki red */
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.25 0.02 280);
+  --muted-foreground: oklch(0.7 0.01 60);
+  --accent: oklch(0.45 0.25 20);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.45 0.25 20);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.3 0.05 280);
+  --input: oklch(0.2 0.02 280);
+  --ring: oklch(0.65 0.19 45);
+  --chart-1: oklch(0.65 0.19 45);
+  --chart-2: oklch(0.45 0.25 20);
+  --chart-3: oklch(0.6 0.2 250);
+  --chart-4: oklch(0.7 0.15 25);
+  --chart-5: oklch(0.55 0.12 145);
+  --radius: 0.125rem; /* Sharp, angular like kunai */
+
+  /* Custom Naruto tokens for dark theme */
+  --chakra-blue: oklch(0.65 0.25 240);
+  --chakra-glow: oklch(0.75 0.3 200);
+  --scroll-paper: oklch(0.22 0.02 55);
+  --kunai-metal: oklch(0.5 0.01 240);
+  --akatsuki-red: oklch(0.5 0.28 20);
+  --uchiha-dark: oklch(0.1 0.02 280);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Add custom Naruto color tokens */
+  --color-chakra-blue: var(--chakra-blue);
+  --color-chakra-glow: var(--chakra-glow);
+  --color-scroll-paper: var(--scroll-paper);
+  --color-kunai-metal: var(--kunai-metal);
+  --color-akatsuki-red: var(--akatsuki-red);
+  --color-uchiha-dark: var(--uchiha-dark);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    /* Use pointer.svg as cursor */
+    cursor: url(/icons/pointer.svg) 12 12, auto;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Use pointer.svg on body */
+    cursor: url(/icons/pointer.svg) 12 12, auto;
+  }
+  
+  /* Custom cursor for interactive elements */
+  button, a, [role="button"] {
+    cursor: url(/icons/pointer.svg) 12 12, pointer;
+  }
+  
+  /* Keep text cursor for input fields */
+  input, textarea {
+    cursor: text;
+  }
+}
+
+/* Custom utility classes for Naruto effects */
+@layer utilities {
+  .chakra-glow {
+    box-shadow: 0 0 20px var(--chakra-glow), 0 0 40px var(--chakra-blue);
+  }
+
+  .kunai-border {
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%) 1;
+  }
+
+  .scroll-texture {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      var(--scroll-paper) 2px,
+      var(--scroll-paper) 4px
+    );
+  }
+
+  .paper-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  /* Add Naruto animated background utilities */
+  .naruto-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .naruto-bg::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 152, 0, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(205, 50, 50, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(100, 150, 255, 0.05) 0%, transparent 70%);
+    animation: chakraGlow 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes chakraGlow {
+    0% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes floatCloud {
+    0% {
+      transform: translateX(-100%) translateY(0);
+    }
+    100% {
+      transform: translateX(100vw) translateY(-20px);
+    }
+  }
+
+  @keyframes floatCloudSlow {
+    0% {
+      transform: translateX(-100%) translateY(0);
+    }
+    100% {
+      transform: translateX(100vw) translateY(30px);
+    }
+  }
+
+  /* Add Clan Symbol floating and chakra pulse animations */
+  @keyframes floatClanSymbol {
+    0% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+      opacity: 0.1;
+    }
+    25% {
+      transform: translate(30px, -50px) rotate(90deg) scale(1.1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: translate(-20px, -100px) rotate(180deg) scale(0.9);
+      opacity: 0.15;
+    }
+    75% {
+      transform: translate(40px, -150px) rotate(270deg) scale(1.05);
+      opacity: 0.25;
+    }
+    100% {
+      transform: translate(0, -200px) rotate(360deg) scale(1);
+      opacity: 0.1;
+    }
+  }
+
+  @keyframes chakraPulse {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes chakraParticle {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) scale(1);
+      opacity: 0;
+    }
+  }
+}
