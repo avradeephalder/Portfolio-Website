@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { Button } from "../ui/Button"
 import { Input } from "../ui/Input"
 import { Textarea } from "../ui/Textarea"
-import { Send, Bird } from "lucide-react"
+import { Send, Bird, Loader2 } from "lucide-react"
 import { sounds } from "../../lib/soundEffects"
 
 export function Contact() {
@@ -175,16 +175,16 @@ export function Contact() {
                 disabled={status.loading}
               >
                 {status.loading ? (
-                  <>
-                    <span className="animate-spin mr-2">🔄</span>
-                    Sending Hawk...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 mr-2" />
-                    Release Messenger Hawk
-                  </>
-                )}
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Sending Hawk...
+                </>
+              ) : (
+                <>
+                  <Send className="w-5 h-5 mr-2" />
+                  Release Messenger Hawk
+                </>
+              )}
               </Button>
             </form>
 
@@ -196,7 +196,7 @@ export function Contact() {
                 className="mt-6 p-4 bg-primary/10 border-l-4 border-primary rounded-r-lg"
               >
                 <p className="text-sm text-primary italic">
-                  ✓ Your message has been sent! I will respond as soon as possible. 🦅
+                  ✓ Your message has been sent! I will respond as soon as possible.
                 </p>
               </motion.div>
             )}
